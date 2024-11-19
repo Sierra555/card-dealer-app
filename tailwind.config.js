@@ -7,12 +7,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-      },
       animation: {
-        spin: 'spin 1s linear infinite',
+        spin: 'spin 3s linear infinite',
       },
       keyframes: {
         spin: {

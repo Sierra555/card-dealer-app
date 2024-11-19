@@ -1,5 +1,4 @@
-import { Suspense } from 'react';
-import Spinner from './Spinner';
+'use client';
 
 const DropDown = ({ label, id, value, handleChange, children }) => {
   return (
@@ -12,7 +11,7 @@ const DropDown = ({ label, id, value, handleChange, children }) => {
         className="p-2 w-full md:w-[200px] border-[1px] truncate shadow-sm rounded cursor-pointer focus:outline-none focus-visible:shadow-lg hover:text-gray-500 hover:shadow-lg transition"
         value={value}
         onChange={handleChange}>
-        <Suspense fallback={<Spinner />}>{children}</Suspense>
+        {children}
       </select>
     </div>
   );

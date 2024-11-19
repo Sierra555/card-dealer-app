@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Button from '@/components/Button';
 import useFetch from '@/hooks/useFetch';
 import { modelYearsList } from '@/helpers/constants';
+import Spinner from '@/components/Spinner';
 
 const ENDPOINT =
   'https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json';
@@ -16,14 +17,18 @@ export default function FilterPage() {
   const [selectedMake, setSelectedMake] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
 
-  const { data, error } = useFetch(ENDPOINT);
+  const { data, error, isLoading } = useFetch(ENDPOINT);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   if (error) {
     return <p>Fetching vehicle makes failes</p>;
   }
 
   const vehicleMakes = data?.Results;
-  const defaultMake = vehicleMakes?.[0]?.MakeName || 'Select a vehicle make';
+  const defaultMake = vehicleMakes?.[0]?.MakeName;
   const disabledBtn = !(selectedMake && selectedYear);
   const selectedMakeId = vehicleMakes?.find(
     (make) => make.MakeName === selectedMake
