@@ -26,7 +26,7 @@ export default function ResultPageClient({ makeId, year }) {
     <main>
       <section>
         <Container>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col items-center gap-5">
             <Link href="/" className="mt-6 w-full md:w-[200px]">
               <Button label="Back to the filter" />
             </Link>
